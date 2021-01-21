@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <style>
+            .bloco {padding:2%;margin:1px 2px 6px 2px;}
+            .explicacao{padding:2%;margin:1px 2px 6px 2px;}
+            * {font-family: Arial, Helvetica, sans-serif;}
+            body {margin: 0;}
+        </style>
+    </head>
+
+<body>
+    <div class="bloco row">
+    <div class="pt-5 bg-secondary text-white border  col-sm">
+        <p>Para melhor visualizarmos o palíndromo, vejamos algumas palavras em português que seguem essa lógica:
+            <ul>
+                <li>Omissíssimo (maior palavra palindrômica de nossa língua)</li>
+                <li>Osso</li>
+                <li>Radar</li>
+                <li>Reler</li>
+                <li>Rir</li>
+                <li>Socos</li>
+                <li>Ovo</li>
+                <li>Ralar</li>
+                <li>Reviver</li>
+                <li>Mirim</li>
+                <li>Ele</li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="pt-5 bloco jumbotron text-center border col-sm rounded-5">
+        <h1>Palíndromo</h1>
+        <p>Escreva uma palavra para verificar se é palindrome</p>
+        <h2>Informe a palavra</h2>
+            <form>
+                <input type="text" name="texto" id="palavra">
+    
+                <button type="button" onclick="checkPalindrome()">Verificar</button>
+            </form>
+
+            <P id="resposta"></P>
+    </div>
+
+    <div class="explicacao p-4 bg-secondary text-white border  col-sm">
+        
+            <p><strong>Palíndromos</strong> são frases ou palavras que podem ser lidas, indiferentemente,
+                da esquerda para a direita, conforme o sentido habitual da leitura, ou da direita para a esquerda, 
+                sem que haja mudança da sua significação. 
+                São também chamados de anacíclicos.
+            </p>
+            <p>Na leitura de um palíndromo da direita para a esquerda, não são levados em consideração sinais de 
+                pontuação, sinais de acentuação, a divisão silábica e o espaçamento entre as palavras. </p>
+        
+    </div>
+</div>
+<script>
+      function checkPalindrome() {
+        let palavra = document.getElementById("palavra").value;
+        let len = palavra.length;
+        let comeco = palavra.substring(0, Math.floor(len/2)).toLowerCase();
+        let fim = palavra.substring(len - Math.floor(len/2)).toLowerCase();
+
+        let reverso = fim.split('').reverse().join('');
+        if(reverso == comeco){
+          document.getElementById("resposta").innerHTML = "A palavra é palindrome, ou seja, pode ser lida de tras para frente.";
+         }else{
+          document.getElementById("resposta").innerHTML = "A palavra não é palindrome, ou seja, não pode ser lida de tras para frente.";
+       }
+}
+</script>
+</body>
+
+</html>
